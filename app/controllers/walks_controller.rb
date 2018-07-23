@@ -16,6 +16,10 @@ class WalksController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  def update
+    byebug
+  end
+
   def edit
     @walk = Walk.find(params[:id].to_i)
     @user = User.find(session[:user_id])

@@ -7,7 +7,8 @@
       <%= check_box_tag "dog_ids[]", d.id, walk.dogs.include?(d) %>
       <%#byebug%>
       <!-- d.dogs_walks.ids gives us the id of the dog instance of dog_walk -->
-      <%= "#{d.name}"%>Notes: <%= f.text_area :notes , cols: "30", rows: "1" %><br>
+      <%= "#{d.name}  "%>Notes: <%= text_area_tag "note_#{d.id}" , nil, cols: "30", rows: "1" %><br>
+      <!--  -->
     </div>
   <% end %>
   <% end %>

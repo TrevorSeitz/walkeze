@@ -6,6 +6,19 @@
 <% if walk.dogs.count > 0 %>
   <p>The following dogs are booked for this walk!</p>
   <% walk.dogs.each do |d| %>
-    <%= d.name %>,
-  <%end%>
+      <div class="input-group" align="left" >
+          <div class="form-inline">
+            <%= form_for walk do |f| %>
+              <p><%= d.name %>
+            <%= text_field_tag("note#{d.id}", params[:note], :size => 15, :placeholder=> "") %>
+            <%byebug%>
+            <%= button_to 'Enter Note', {:controller => "walks", :action => "update", :dog_id => d.id, :walk_id => walk.id} %>
+
+            <%#= button_tag(type: "submit", class: "btn  btn-success ", id: "#{d.id}") do %>
+
+            <% end %>
+          <% end %>
+          </div>
+      </div></p>
+  <%#end%>
 <% end %>
