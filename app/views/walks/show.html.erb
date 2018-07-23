@@ -1,0 +1,5 @@
+<%= render partial: 'form', locals: { walk: @walk } %><br><br><br><br>
+
+
+<p><%= link_to "Go to your Page", user_path(current_user.id) %></p>
+<p><%= link_to "Edit Your Booking", edit_walk_path(@walk)%></p><br>
