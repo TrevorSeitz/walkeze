@@ -5,7 +5,7 @@
   <% dogs.each do |d| %>
     <div>
       <%= check_box_tag "dog_ids[]", d.id, walk.dogs.include?(d) %>
-      <%byebug%>
+      <%#byebug%>
       <!-- d.dogs_walks.ids gives us the id of the dog instance of dog_walk -->
       <%= "#{d.name}"%>Notes: <%= f.text_area :notes , cols: "30", rows: "1" %><br>
     </div>
