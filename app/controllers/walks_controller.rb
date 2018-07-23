@@ -9,7 +9,7 @@ class WalksController < ApplicationController
     @walk = Walk.find(params[:id].to_i)
     # if (params[:dog_ids].map(&:to_i) & @walk.dogs.ids).count > walk.available_spots
     # return error
-    byebug
+    #byebug
     @walk.dogs = Dog.where(id: params[:dog_ids])
     @walk.save
 
