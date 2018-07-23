@@ -1,0 +1,8 @@
+<% if session[:user_id] %>
+  <%= "Welcome #{current_user.name} to Walk-eze " %>
+
+  <p><%= link_to "Go to your Page", user_path(current_user.id) %></p>
+  <p><%= link_to "Book a Walk", walks_path %></p><br>
+<% else %>
+  <%= link_to('Sign in with Github', '/auth/github') %>
+<% end %>
