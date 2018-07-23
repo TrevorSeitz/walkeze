@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :dogs, :users, :welcome, :sessions, :join_walks, :walks
+  resources :dogs, :users, :welcome, :sessions, :walks
 
   resources :users do
     resources :dogs, :walks
