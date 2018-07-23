@@ -40,6 +40,7 @@ gem 'omniauth'
 gem "omniauth-github", '1.1.1'
 gem 'dotenv-rails'
 gem 'thin'
+gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
