@@ -1,0 +1,13 @@
+<h2>Choose from the follwing walks</h2>
+
+<% @walks.each do |walk| %>
+  <% if walk.available_spots > 0 %>
+    <%= render partial: 'form', locals: { user: @user, dog: @dog, dogs: @dogs, walk: walk } %>
+
+    <p><%= link_to "Book This!", new_join_walk_path(walk.id)%></p>
+
+  <% end %><br>
+<% end %>
+
+
+<p><%= link_to "Go to your Page", user_path(current_user.id) %></p>

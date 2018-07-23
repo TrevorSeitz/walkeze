@@ -1,0 +1,15 @@
+
+<p>Who's joining the walk?</p>
+<%= form_for "walks", :url => {:action => "create", :id => walk.id}  do |f| %>
+  <% if dogs %>
+  <% dogs.each do |d| %>
+    <div>
+      <%= check_box_tag "dog_ids[]", d.id, walk.dogs.include?(d) %>
+      <%byebug%>
+      <!-- d.dogs_walks.ids gives us the id of the dog instance of dog_walk -->
+      <%= "#{d.name}"%>Notes: <%= f.text_area :notes , cols: "30", rows: "1" %><br>
+    </div>
+  <% end %>
+  <% end %>
+    <%= f.submit "Submit"%>
+<% end %>
