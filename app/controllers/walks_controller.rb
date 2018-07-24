@@ -13,7 +13,7 @@ class WalksController < ApplicationController
     @walk.dogs = Dog.where(id: params[:dog_ids])
     @walk.save
 
-    redirect_to user_path(current_user)
+    render 'confirm_walk'
   end
 
   def update
@@ -21,7 +21,8 @@ class WalksController < ApplicationController
     @dogs_walk = DogsWalk.find(@dogs_walk_id)
     @dogs_walk.notes = params[:note]
     @dogs_walk.save
-    redirect_to walk_path(params[:walk_id])
+    @walk = Walk.find(params[:walk_id].to_i)
+    render 'confirm_walk'
   end
 
   def edit
