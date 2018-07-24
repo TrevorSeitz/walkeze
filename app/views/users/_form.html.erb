@@ -17,5 +17,5 @@ Your currently registerd dogs:<br>
   <% end %>
 <% end %><br><br>
 
-<%= button_to "Schedule a Walk", walks_path%><br>
-<%= button_to "Add a new dog", new_dog_path %><br><br>
+<%= button_to "Schedule a Walk", walks_path, {method: :get} %><br>
+<%= button_to "Add a new dog", new_dog_path, {method: :get} %><br><br>
