@@ -4,7 +4,5 @@ class Walk < ApplicationRecord
   has_many :dogs_walks
   has_many :dogs, through: :dogs_walks
 
-  # has_and_belongs_to_many :dogs
-  #
-  # accepts_nested_attributes_for :dogs
+  accepts_nested_attributes_for :dogs_walks
 end

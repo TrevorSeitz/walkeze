@@ -17,7 +17,11 @@ class WalksController < ApplicationController
   end
 
   def update
-    byebug
+    @dogs_walk_id = DogsWalk.where(dog_id: params[:dog_id], walk_id: params[:walk_id]).ids[0]
+    @dogs_walk = DogsWalk.find(@dogs_walk_id)
+    @dogs_walk.notes = params[:note]
+    @dogs_walk.save
+    redirect_to walk_path(params[:walk_id])
   end
 
   def edit
