@@ -1,6 +1,6 @@
 # README
 
-Ruby on Rails Dog Walking App
+Walk-eze is a Ruby on Rails Dog Walking App
 
 This app provides a database and web interface for users to create an account to book Dog walks from Dog Walkers offering 
 walks. 
