@@ -7,12 +7,21 @@ class WalksController < ApplicationController
 
   def create
     @walk = Walk.find(params[:id].to_i)
-    params[:dog_ids].map(&:to_i).each do |d|
-      if !@walk.dogs.ids.include?(d)
-        @dog = Dog.find(d)
-        @walk.dogs << @dog
+    if params[:dog_ids]
+      params[:dog_ids].map(&:to_i).each do |d|
+        if !@walk.dogs.ids.include?(d)
+          @dog = Dog.find(d)
+          @walk.dogs << @dog
+        end
       end
+    else
+      params[:dog_ids]=[]
     end
+    # 
+    # if !params[:dog_ids]
+    #   params[:dog_ids]=[]
+    # end
+
     @walk.dogs.each do |wd|
       if !params[:dog_ids].map(&:to_i).include?(wd.id)
         if wd.user_id == current_user.id
@@ -20,8 +29,15 @@ class WalksController < ApplicationController
         end
       end
     end
-    @walk.save
-    render 'confirm_walk'
+
+    if @walk.dogs.count > @walk.available_spots
+      # flash[:fail] = "There is not enough space for all these dogs! Please choose fewer dogs."
+      redirect_to edit_walk_url(@walk)
+      flash[:notice] = 'There is not enough space for all these dogs! Please choose fewer dogs.'
+    else
+      @walk.save
+      render 'confirm_walk'
+    end
   end
 
   def update
