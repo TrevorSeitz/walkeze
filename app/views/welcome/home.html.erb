@@ -1,9 +1,16 @@
+
+
+
+Walk-eze - the place to get your dogs walked!!
+
+
+
 <% if current_user %>
   <%= "Welcome #{current_user.name} to Walk-eze " %>
 
   <p><%= button_to "Go to your Page", user_path(current_user.id), {method: :get} %></p>
   <p><%= button_to "Book a Walk", walks_path, {method: :get} %></p><br>
 <% else %>
-  <%= link_to('Sign in with Github', '/auth/github') %>
+  <%#= link_to('Sign in with Github', '/auth/github') %>
   <%#= link_to('Log in with Facebook!', '/auth/facebook') %>
 <% end %>
