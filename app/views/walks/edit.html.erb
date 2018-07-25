@@ -1,8 +1,6 @@
-This is the walks Edit page
-
 
 <%= render partial: 'form', locals: { walk: @walk } %>
-
+<%= render partial: 'show_dogs', locals: { walk: @walk } %><br>
 <%= render partial: 'add_dogs', locals: { walk: @walk, dogs: @dogs } %>
 
 

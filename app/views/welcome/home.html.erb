@@ -1,4 +1,11 @@
-<% if session[:user_id] %>
+
+
+
+Walk-eze - the place to get your dogs walked!!
+
+
+
+<% if current_user %>
   <%= "Welcome #{current_user.name} to Walk-eze " %>
 
   <p><%= button_to "Go to your Page", user_path(current_user.id), {method: :get} %></p>

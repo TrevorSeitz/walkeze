@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
-  # , path_names: {sign_in: "login", sign_out: "logout"}
 
-  resources :dogs, :users, :welcome, :sessions, :walks
+  ActiveAdmin.routes(self)
+  #devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
+  resources :dogs, :users, :walks
+  resources :welcome, :only => [:home]
+  resources :sessions, :except => [:show, :index, :update]
+
 
   resources :users do
     resources :dogs, :walks

@@ -9,15 +9,16 @@ class DogsController < ApplicationController
   end
 
   def create
+    @error = false
     @user = User.find(session[:user_id])
     @dog = Dog.create(dog_params)
-    # byebug
     @dog.user_id = @user.id
     @dog.save
     if @dog.valid?
       redirect_to user_path(@user)
     else
-      redirect_to new_dog_path
+      @error = true
+      render :action => :new, dog_params: dog_params
     end
   end
 
