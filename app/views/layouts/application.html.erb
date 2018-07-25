@@ -24,15 +24,17 @@
           <a class="navbar-brand">
             <% if current_user %>
               Logged in as <strong><%= current_user.name %></strong>.
-              <%#= link_to 'Edit profile', edit_user_registration_path %> |
+              <%= link_to 'Edit profile', edit_user_registration_path %> |
               <%#= link_to "Logout", destroy_user_session_path, method: :delete %>
               <%= link_to('Logout', signout_path) %>
             <% else %>
+
               <%#= link_to "Sign up", new_user_registration_path %> |
               <%= link_to "Sign Up", new_user_path %>
               <%= link_to "Login", new_session_path %>
               <%= link_to('Login with GitHub', '/auth/github')  %>
               <%#= link_to "Administrator Login", admin_root_path %>
+
             <% end %>
           </a>
          <a class="navbar-brand">
