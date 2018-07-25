@@ -7,16 +7,25 @@ class WalksController < ApplicationController
 
   def create
     @walk = Walk.find(params[:id].to_i)
-    # if (params[:dog_ids].map(&:to_i) & @walk.dogs.ids).count > walk.available_spots
-    # return error
-    #byebug
-    @walk.dogs = Dog.where(id: params[:dog_ids])
+    params[:dog_ids].map(&:to_i).each do |d|
+      if !@walk.dogs.ids.include?(d)
+        @dog = Dog.find(d)
+        @walk.dogs << @dog
+      end
+    end
+    @walk.dogs.each do |wd|
+      if !params[:dog_ids].map(&:to_i).include?(wd.id)
+        if wd.user_id == current_user.id
+          @walk.dogs.delete(wd)
+        end
+      end
+    end
     @walk.save
-
     render 'confirm_walk'
   end
 
   def update
+    byebug
     @dogs_walk_id = DogsWalk.where(dog_id: params[:dog_id], walk_id: params[:walk_id]).ids[0]
     @dogs_walk = DogsWalk.find(@dogs_walk_id)
     @dogs_walk.notes = params[:note]
@@ -34,8 +43,6 @@ class WalksController < ApplicationController
   def show
     @walk = Walk.find(params[:id].to_i)
   end
-
-
 
   private
 
