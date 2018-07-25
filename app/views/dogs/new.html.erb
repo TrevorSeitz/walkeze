@@ -1,4 +1,7 @@
-This is the New Dogs page
+<% if @error %>
+<%= render partial: 'error', locals: { user: @user, dog: @dog, dogs: @dogs } %>
+<% end %>
+
 <%= render partial: 'form', locals: { user: @user, dog: @dog, dogs: @dogs } %>
 
 <%= render partial: 'links' %>
